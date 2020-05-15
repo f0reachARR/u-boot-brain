@@ -136,6 +136,8 @@ void mxs_common_spl_init(const uint32_t arg, const uint32_t *resptr,
 	data->mem_dram_size = mxs_mem_get_size();
 
 	data->boot_mode_idx = bootmode;
+	printf("dram_size=%08x mode=%08x\n", data->mem_dram_size, data->boot_mode_idx);
+	data->mem_dram_size = 0x8000000;
 
 	mxs_power_wait_pswitch();
 
