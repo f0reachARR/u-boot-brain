@@ -82,13 +82,12 @@ static int mx28evk_mmc_cd(int id)
 
 int board_mmc_init(bd_t *bis)
 {
-	/* Configure WP as input */
-	gpio_direction_input(MX28_PAD_SSP1_SCK__GPIO_2_12);
+	mxsmmc_initialize(bis, 0, mx28evk_mmc_wp, mx28evk_mmc_cd);
+	mxsmmc_initialize(bis, 1, mx28evk_mmc_wp, mx28evk_mmc_cd);
 
-	/* Configure MMC0 Power Enable */
-	gpio_direction_output(MX28_PAD_PWM3__GPIO_3_28, 0);
-
-	return mxsmmc_initialize(bis, 0, mx28evk_mmc_wp, NULL);
+	/* Turn on the SD*/
+	gpio_direction_output(MX28_PAD_SSP2_SS2__GPIO_2_21, 0);
+	return 0;
 }
 #endif
 
