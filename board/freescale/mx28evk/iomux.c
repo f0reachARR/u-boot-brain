@@ -138,10 +138,13 @@ const iomux_cfg_t iomux_setup[] = {
         /* I2C */
         MX28_PAD_I2C0_SCL__I2C0_SCL,
         MX28_PAD_I2C0_SDA__I2C0_SDA,
-        MX28_PAD_PWM1__DUART_TX, //TODO REMOVE
-        MX28_PAD_PWM0__DUART_RX, //TODO REMOVE
-        //MX28_PAD_PWM1__I2C1_SDA,
-        //MX28_PAD_PWM0__I2C1_SCL,
+        //MX28_PAD_PWM1__DUART_TX, //TODO REMOVE
+        //MX28_PAD_PWM0__DUART_RX, //TODO REMOVE
+        MX28_PAD_PWM1__I2C1_SDA,
+        MX28_PAD_PWM0__I2C1_SCL,
+
+        MX28_PAD_AUART0_RTS__DUART_TX,  // TP302
+        MX28_PAD_AUART0_CTS__DUART_RX,  // TP301
 
         /* LCD */
         MX28_PAD_LCD_D00__LCD_D0 | MUX_CONFIG_LCD,
