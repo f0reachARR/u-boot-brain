@@ -37,8 +37,8 @@ int board_early_init_f(void)
 
 	/* SSP0 clock at 96MHz */
 	mxs_set_sspclk(MXC_SSPCLK0, 96000, 0);
-	/* SSP2 clock at 160MHz */
-	mxs_set_sspclk(MXC_SSPCLK2, 160000, 0);
+	/* SSP1 clock at 96MHz */
+	mxs_set_sspclk(MXC_SSPCLK1, 96000, 0);
 
 #ifdef	CONFIG_CMD_USB
 	mxs_iomux_setup_pad(MX28_PAD_SSP2_SS1__USB1_OVERCURRENT);
