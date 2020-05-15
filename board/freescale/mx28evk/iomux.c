@@ -186,10 +186,10 @@ const iomux_cfg_t iomux_setup[] = {
         MX28_PAD_PWM4__GPIO_3_29 | MUX_CONFIG_GPIO,
 
         /* PWM */
-        //MX28_PAD_AUART1_RX__PWM_0 |
-        //    (MXS_PAD_4MA | MXS_PAD_3V3 | MXS_PAD_NOPULL),
-        //MX28_PAD_AUART1_TX__PWM_1 |
-        //    (MXS_PAD_4MA | MXS_PAD_3V3 | MXS_PAD_NOPULL),
+        MX28_PAD_AUART1_RX__PWM_0 |
+            (MXS_PAD_4MA | MXS_PAD_3V3 | MXS_PAD_NOPULL),
+        MX28_PAD_AUART1_TX__PWM_1 |
+            (MXS_PAD_4MA | MXS_PAD_3V3 | MXS_PAD_NOPULL),
 
         /* SAIF */
         MX28_PAD_SAIF0_SDATA0__SAIF0_SDATA0 |
