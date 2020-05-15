@@ -72,12 +72,12 @@ int board_init(void)
 #ifdef	CONFIG_CMD_MMC
 static int mx28evk_mmc_wp(int id)
 {
-	if (id != 0) {
-		printf("MXS MMC: Invalid card selected (card id = %d)\n", id);
-		return 1;
-	}
+	return 0;
+}
 
-	return gpio_get_value(MX28_PAD_SSP1_SCK__GPIO_2_12);
+static int mx28evk_mmc_cd(int id)
+{
+	return 1;
 }
 
 int board_mmc_init(bd_t *bis)
