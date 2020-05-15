@@ -15,7 +15,7 @@
 
 /* Memory configuration */
 #define PHYS_SDRAM_1			0x40000000	/* Base address */
-#define PHYS_SDRAM_1_SIZE		0x40000000	/* Max 1 GB RAM */
+#define PHYS_SDRAM_1_SIZE		0x8000000	/* Max 128 MB RAM */
 #define CONFIG_SYS_SDRAM_BASE		PHYS_SDRAM_1
 
 /* Environment */
