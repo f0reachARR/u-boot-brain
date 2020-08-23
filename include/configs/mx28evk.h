@@ -92,12 +92,14 @@
 
 /* Framebuffer support */
 #ifdef CONFIG_VIDEO
+#define CONFIG_VIDEO_MXS_MODE_SYSTEM
 #define CONFIG_VIDEO_LOGO
 #define CONFIG_SPLASH_SCREEN
 #define CONFIG_BMP_16BPP
 #define CONFIG_VIDEO_BMP_RLE8
 #define CONFIG_VIDEO_BMP_GZIP
 #define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE	(512 << 10)
+#define LCD_BPP LCD_COLOR16
 #endif
 
 /* Boot Linux */
@@ -107,32 +109,18 @@
 
 /* Extra Environment */
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"update_sd_firmware_filename=u-boot.sd\0" \
-	"update_sd_firmware="		/* Update the SD firmware partition */ \
-		"if mmc rescan ; then "	\
-		"if tftp ${update_sd_firmware_filename} ; then " \
-		"setexpr fw_sz ${filesize} / 0x200 ; "	/* SD block size */ \
-		"setexpr fw_sz ${fw_sz} + 1 ; "	\
-		"mmc write ${loadaddr} 0x800 ${fw_sz} ; " \
-		"fi ; "	\
-		"fi\0" \
-	"script=boot.scr\0"	\
+	"videomode=video=ctfb:x:800,y:480,depth:16,pclk:30857,le:0,ri:0,up:0,lo:0,hs:0,vs:0,sync:0,vmode:0\0" \
+	"bootdelay=0\0" \
 	"image=zImage\0" \
-	"console_fsl=ttyAM0\0" \
 	"console_mainline=ttyAMA0\0" \
 	"fdt_file=imx28-evk.dtb\0" \
 	"fdt_addr=0x41000000\0" \
 	"boot_fdt=try\0" \
-	"ip_dyn=yes\0" \
 	"mmcdev=1\0" \
 	"mmcpart=1\0" \
 	"mmcroot=/dev/mmcblk1p2 rw rootwait\0" \
-	"mmcargs=setenv bootargs console=${console_mainline},${baudrate} " \
+	"mmcargs=setenv bootargs console=${console_mainline},${baudrate} quiet " \
 		"root=${mmcroot}\0" \
-	"loadbootscript="  \
-		"fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
-	"bootscript=echo Running bootscript from mmc ...; "	\
-		"source\0" \
 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
 	"mmcboot=echo Booting from mmc ...; " \
@@ -153,13 +141,9 @@
 
 #define CONFIG_BOOTCOMMAND \
 	"mmc dev ${mmcdev}; if mmc rescan; then " \
-		"if run loadbootscript; then " \
-			"run bootscript; " \
-		"else " \
-			"if run loadimage; then " \
-				"run mmcboot; " \
-			"else run netboot; " \
-			"fi; " \
+		"if run loadimage; then " \
+			"run mmcboot; " \
+		"else run netboot; " \
 		"fi; " \
 	"else run netboot; fi"
 
