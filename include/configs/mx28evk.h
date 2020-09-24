@@ -119,7 +119,7 @@
 	"mmcdev=1\0" \
 	"mmcpart=1\0" \
 	"mmcroot=/dev/mmcblk1p2 rw rootwait\0" \
-	"mmcargs=setenv bootargs console=${console_mainline},${baudrate} quiet " \
+	"mmcargs=setenv bootargs console=${console_mainline},${baudrate} console=tty1 " \
 		"root=${mmcroot}\0" \
 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
