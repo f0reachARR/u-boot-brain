@@ -217,10 +217,10 @@ static const struct {
 	{ 0xbb, 0, 0 }, /* ? */
 		{ 0x14, 1, 0 }, { 0x55, 1, 0 },
 	{ 0x36, 0, 0 }, /* Memory Access Control */
-		{ 0x28, 1, 0 },
+		{ 0x21, 1, 0 },
 	{ 0x3a, 0, 0 }, /* Interface Pixel Format */
 		{ 0x55, 1, 0 },
-	{ 0x21, 0, 0 }, /* Display Inversion On */
+	{ 0x20, 0, 0 }, /* Display Inversion On */
 	{ 0xb6, 0, 0 }, /* MCU/RGB Interface Select */
 		{ 0x01, 1, 0 }, { 0x80, 1, 0 }, { 0x8f, 1, 0 },
 	{ 0x44, 0, 0 }, /* Write Tear Scan Line? */
@@ -230,7 +230,7 @@ static const struct {
 	{ 0x11, 0, 120 }, /* Sleep Out */
 	{ 0x29, 0, 20 }, /* Display On */
 	{ 0x2a, 0, 0 }, /* Column Address Set */
-		{ 0x00, 1, 0 }, { 0x00, 1, 0 }, { 0x03, 1, 0 }, { 0x1f, 1, 0 },
+		{ 0x00, 1, 0 }, { 0x00, 1, 0 }, { 0x03, 1, 0 }, { 0x55, 1, 0 },
 	{ 0x2b, 0, 0 }, /* Page Address Set */
 		{ 0x00, 1, 0 }, { 0x00, 1, 0 }, { 0x01, 1, 0 }, { 0xdf, 1, 0 },
 	{ 0x2c, 0, 0 }, /* Memory Write*/
@@ -274,7 +274,7 @@ void mxsfb_system_setup(void)
 
 	/* Fill black */
 	for (i = 0; i < 480; i++) {
-		for (j = 0; j < 800; j++) {
+		for (j = 0; j < 854; j++) {
 			mxsfb_write_byte(0, 1);
 		}
 	}
